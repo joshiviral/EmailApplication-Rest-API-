@@ -3,34 +3,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:text="EMAIL Application"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
     <EditText
         android:id="@+id/etx_name"
-        android:hint="Name"
         android:layout_width="390dp"
         android:layout_height="wrap_content"
-        />
+        android:hint="From" />
+
     <EditText
-        android:id="@+id/etx_subject"
-        android:hint="Subject"
+        android:id="@+id/etx_to"
         android:layout_width="390dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/etx_name"/>
+        android:layout_below="@id/etx_name"
+        android:hint="To" />
+
+    <EditText
+
+        android:id="@+id/etx_subject"
+        android:layout_width="390dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etx_to"
+        android:hint="Subject" />
+
     <EditText
         android:id="@+id/etx_message"
-        android:hint="Message"
         android:layout_width="390dp"
         android:layout_height="250dp"
-        android:layout_below="@id/etx_subject"/>
+        android:layout_below="@id/etx_subject"
+        android:hint="Compose Email" />
 
     <Button
         android:id="@+id/btn_send"
-        android:layout_width="390dp"
-        android:layout_height="wrap_content"
+        android:background="@drawable/buttonshape"
+        android:layout_width="90dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
         android:layout_below="@id/etx_message"
-        android:text="SEND"/>
+        android:text="SEND"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"/>
 
 </RelativeLayout>
