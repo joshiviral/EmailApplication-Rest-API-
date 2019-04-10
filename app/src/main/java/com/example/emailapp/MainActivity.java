@@ -9,11 +9,17 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
@@ -25,7 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     private String TAG = MainActivity.class.getSimpleName();
     private DrawerLayout drawerLayout;
@@ -42,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         Button button = findViewById(R.id.btn_email_composer);
         Toolbar toolbar = findViewById(R.id.toolbar);
 
@@ -52,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         toggle.syncState();
         contactList = new ArrayList<>();
         lv = (ListView) findViewById(R.id.list);
+        registerForContextMenu(lv);
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,12 +74,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        getMenuInflater().inflate(R.menu.listview_update_delete, menu);
+    }
+
+    @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        return false;
     }
 
     /**
@@ -175,8 +196,9 @@ public class MainActivity extends AppCompatActivity {
                     R.layout.list_item, new String[]{"name", "email",
                     "mobile"}, new int[]{R.id.name,
                     R.id.email, R.id.mobile});
-
             lv.setAdapter(adapter);
+
+
         }
     }
 }
