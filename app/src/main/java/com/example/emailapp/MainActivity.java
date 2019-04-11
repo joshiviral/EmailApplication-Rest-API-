@@ -197,8 +197,6 @@ public class MainActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                     "mobile"}, new int[]{R.id.name,
                     R.id.email, R.id.mobile});
             lv.setAdapter(adapter);
-
-
         }
     }
 }

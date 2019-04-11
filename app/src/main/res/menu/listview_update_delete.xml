@@ -2,8 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/tools">
 
-<item android:id="@+id/item1"
-    android:title="delete"
-    app:showsAsAction="ifRoom"/>
+    <item
+        android:id="@+id/item1"
+        android:title="delete"
+        app:showsAsAction="ifRoom" />
 
-    </menu>
+</menu>
