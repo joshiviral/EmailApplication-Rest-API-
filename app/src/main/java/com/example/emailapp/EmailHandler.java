@@ -13,7 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
-public class EmailHandler  extends AppCompatActivity {
+public class EmailHandler extends AppCompatActivity {
 
     EditText etx_Name;
     EditText etx_Subject;
@@ -37,7 +37,13 @@ public class EmailHandler  extends AppCompatActivity {
             }
         });
     }
-    public void sendMail() {
 
+    public void sendMail() {
+        Intent it = new Intent(Intent.ACTION_SEND);
+        it.putExtra(Intent.EXTRA_EMAIL, new String[]{etx_Name.getText().toString()});
+        it.putExtra(Intent.EXTRA_SUBJECT,etx_Message.getText().toString());
+        it.putExtra(Intent.EXTRA_TEXT,etx_Message.getText());
+        it.setType("message/rfc822");
+        startActivity(Intent.createChooser(it,"Choose Mail App"));
     }
 }
